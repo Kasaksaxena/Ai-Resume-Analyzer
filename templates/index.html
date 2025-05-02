@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Resume Analyzer</title>
+    </head>
+        
+    <body>
+        <h1>Upload Your Resume</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="resume" accept=".pdf" required>
+            <button type="submit">Upload</button>
+        </form>
+    
+        {% if skills %}
+            <h2>Extracted Skills:</h2>
+            <ul>
+            {% for skill in skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    
+        {% if education %}
+            <h2>Extracted Education:</h2>
+            <ul>
+            {% for edu in education %}
+                <li>{{ edu }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    
+        {% if experience %}
+            <h2>Extracted Experience:</h2>
+            <ul>
+            {% for exp in experience %}
+                <li>{{ exp }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    </body>
+    </html>        
