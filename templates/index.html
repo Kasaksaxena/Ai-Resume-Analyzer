@@ -4,40 +4,62 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Resume Analyzer</title>
-    </head>
-        
-    <body>
-        <h1>Upload Your Resume</h1>
-        <form method="POST" enctype="multipart/form-data">
-            <input type="file" name="resume" accept=".pdf" required>
-            <button type="submit">Upload</button>
-        </form>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>     
+    <body class="bg-light">
+        <div class="container py-5">
+            <div class="card shadow p-4">
+                <h1 class="mb-4 text-center text-primary">Resume Analyzer</h1>
+                <form method="POST" enctype="multipart/form-data" class="mb-4">
+                    <div class="mb-3">
+                        <label for="resume" class="form-label">Upload your resume (PDF)</label>
+                        <input type="file" class="form-control" name="resume" id="resume" accept=".pdf" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Analyze Resume</button>
+                </form>
     
-        {% if skills %}
-            <h2>Extracted Skills:</h2>
-            <ul>
-            {% for skill in skills %}
-                <li>{{ skill }}</li>
-            {% endfor %}
-            </ul>
-        {% endif %}
+                {% if skills %}
+                <div class="mt-4">
+                    <h4 class="text-success">Extracted Skills</h4>
+                    <ul class="list-group mb-3">
+                        {% for skill in skills %}
+                        <li class="list-group-item">{{ skill }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
     
-        {% if education %}
-            <h2>Extracted Education:</h2>
-            <ul>
-            {% for edu in education %}
-                <li>{{ edu }}</li>
-            {% endfor %}
-            </ul>
-        {% endif %}
+                {% if education %}
+                <div class="mt-4">
+                    <h4 class="text-success">Extracted Education</h4>
+                    <ul class="list-group mb-3">
+                        {% for edu in education %}
+                        <li class="list-group-item">{{ edu }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
     
-        {% if experience %}
-            <h2>Extracted Experience:</h2>
-            <ul>
-            {% for exp in experience %}
-                <li>{{ exp }}</li>
-            {% endfor %}
-            </ul>
-        {% endif %}
+                {% if experience %}
+                <div class="mt-4">
+                    <h4 class="text-success">Extracted Experience</h4>
+                    <ul class="list-group mb-3">
+                        {% for exp in experience %}
+                        <li class="list-group-item">{{ exp }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            {% if score %}
+<div class="alert alert-info mt-4 text-center" role="alert">
+    Match Score: <strong>{{ score }}%</strong>
+    <p>Your resume matches <strong>{{ score }}%</strong> of the job description.</p>
+
+</div>
+{% endif %}
+        </div>
+
     </body>
+        
     </html>        
